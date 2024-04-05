@@ -43,14 +43,14 @@ function playRound () {
 
 function playGame () {
     for (let i = 0; i < 5; i++){
-        playRound();
-        if (i === 4 && (playerScore > computerScore)) {
-            console.log("You win the game! Score: You (" + playerScore + ") - Computer (" + computerScore + ")");
-        } else if (i === 4 && (playerScore < computerScore)) {
-            console.log("You lose the game! Score: You (" + playerScore + ") - Computer (" + computerScore + ")");
-        } else if (i === 4 && (playerScore === computerScore)) {
-            console.log("You tied the game! Score: You (" + playerScore + ") - Computer (" + computerScore + ")");
-        }
+        playRound(); 
+    }
+    if (playerScore > computerScore) {
+        console.log("You win the game! Score: You (" + playerScore + ") - Computer (" + computerScore + ")");
+    } else if (playerScore < computerScore) {
+        console.log("You lose the game! Score: You (" + playerScore + ") - Computer (" + computerScore + ")");
+    } else if (playerScore === computerScore) {
+        console.log("You tied the game! Score: You (" + playerScore + ") - Computer (" + computerScore + ")");
     }
 }
 
