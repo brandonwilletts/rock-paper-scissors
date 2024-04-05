@@ -15,8 +15,18 @@ function getComputerChoice() {
     return computerSelection;
 }
 
-function playRound () {
+function getPlayerChoice() {
     let playerSelection = prompt("Enter 'rock', 'paper', or 'scissors'").toLowerCase();
+    if (playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors") {
+        return playerSelection;
+    } else {
+        console.log("Invalid selection - please enter 'rock', 'paper', or 'scissors");
+        getPlayerChoice();
+    }
+}
+
+function playRound () {
+    let playerSelection = getPlayerChoice();
     let computerSelection = getComputerChoice();
     if (playerSelection === "rock" && computerSelection === "scissors") {
         playerScore++
