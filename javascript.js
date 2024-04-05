@@ -1,14 +1,3 @@
-//PSEUDOCODE
-
-//Compare playerSelection and computerSelection and determine who wins (playGame)
-    //If player wins, add 1 to playerScore, add 1 to gamesPlayed, display message and play again
-    //If computer wins, add 1 to computerScore, add 1 to gamesPlayed, display message and play again
-    //If tie, just display message and play again
-//Check # of games played (playRound)
-    //Keep track of wins for player and computer
-    //If < 5, keep playing
-    //If === 5, compare playerWins to computerWins, return the winner, and display message
-
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
     let computerSelection;
@@ -29,22 +18,22 @@ function getComputerChoice() {
 function playRound (playerSelection, computerSelection) {
     if (playerSelection === "rock" && computerSelection === "scissors") {
         playerScore++
-        return "You Win! Rock beats Scissors - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
+        return "You win! Rock beats Scissors - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
     } else if (playerSelection === "rock" && computerSelection === "paper") {
         computerScore++
-        return "You Lose! Paper beats Rock - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
+        return "You lose! Paper beats Rock - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
         computerScore++
-        return "You Lose! Rock beats Scissors - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
+        return "You lose! Rock beats Scissors - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
         playerScore++
-        return "You Win! Scissors beats Paper - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
+        return "You win! Scissors beats Paper - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
         computerScore++
-        return "You Lose! Scissors beats Paper - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
+        return "You lose! Scissors beats Paper - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
     } else if (playerSelection === "paper" && computerSelection === "rock") {
         playerScore++
-        return "You Win! Paper beats Rock - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
+        return "You win! Paper beats Rock - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
     } else {
         return "Tie! Nobody wins - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
     }
@@ -55,10 +44,17 @@ function playGame () {
         const playerSelection = prompt("Enter 'rock', 'paper', or 'scissors'").toLowerCase();
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
+        if (i === 4 && (playerScore > computerScore)) {
+            return "You win the game! Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
+        } else if (i === 4 && (playerScore < computerScore)) {
+            return "You lose the game! Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
+        } else if (i === 4 && (playerScore === computerScore)) {
+            return "You tied the game! Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
+        }
     }
 }
 
 let playerScore = 0;
 let computerScore = 0;
 
-playGame();
+console.log(playGame());
