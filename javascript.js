@@ -28,23 +28,37 @@ function getComputerChoice() {
 
 function playRound (playerSelection, computerSelection) {
     if (playerSelection === "rock" && computerSelection === "scissors") {
-        return "You Win! Rock beats Scissors";
+        playerScore++
+        return "You Win! Rock beats Scissors - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
     } else if (playerSelection === "rock" && computerSelection === "paper") {
-        return "You Lose! Paper beats Rock";
+        computerScore++
+        return "You Lose! Paper beats Rock - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
-        return "You Lose! Rock beats Scissors";
+        computerScore++
+        return "You Lose! Rock beats Scissors - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return "You Win! Scissors beats Paper";
+        playerScore++
+        return "You Win! Scissors beats Paper - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
-        return "You Lose! Scissors beats Paper";
+        computerScore++
+        return "You Lose! Scissors beats Paper - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
     } else if (playerSelection === "paper" && computerSelection === "rock") {
-        return "You Win! Paper beats Rock";
+        playerScore++
+        return "You Win! Paper beats Rock - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
     } else {
-        return "Tie! Nobody wins";
+        return "Tie! Nobody wins - Current Score: You (" + playerScore + ") - Computer (" + computerScore + ")";
     }
 }
 
-const playerSelection = prompt("Enter 'rock', 'paper', or 'scissors'").toLowerCase();
-const computerSelection = getComputerChoice();
+function playGame () {
+    for (let i = 0; i < 5; i++){
+        const playerSelection = prompt("Enter 'rock', 'paper', or 'scissors'").toLowerCase();
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
 
-console.log(playRound(playerSelection, computerSelection));
+let playerScore = 0;
+let computerScore = 0;
+
+playGame();
