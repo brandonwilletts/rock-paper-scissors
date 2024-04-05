@@ -1,18 +1,11 @@
 //PSEUDOCODE
 
-//Generate random "rock", "paper", "scissors" selection (getComputerChoice)
-    //Generate random number
-    //Assign number to "rock", "paper", or "scissors" depending on the value
-//Take in prompt from player (playerSelection)
-    //Check that playerSelection is valid (case insensitive)
-        //If so, play game
-        //If not, return error message and request new playerSelection
-//Keep track of wins for player and computer
 //Compare playerSelection and computerSelection and determine who wins (playGame)
     //If player wins, add 1 to playerScore, add 1 to gamesPlayed, display message and play again
     //If computer wins, add 1 to computerScore, add 1 to gamesPlayed, display message and play again
     //If tie, just display message and play again
 //Check # of games played (playRound)
+    //Keep track of wins for player and computer
     //If < 5, keep playing
     //If === 5, compare playerWins to computerWins, return the winner, and display message
 
@@ -32,3 +25,26 @@ function getComputerChoice() {
     }
     return computerSelection;
 }
+
+function playRound (playerSelection, computerSelection) {
+    if (playerSelection === "rock" && computerSelection === "scissors") {
+        return "You Win! Rock beats Scissors";
+    } else if (playerSelection === "rock" && computerSelection === "paper") {
+        return "You Lose! Paper beats Rock";
+    } else if (playerSelection === "scissors" && computerSelection === "rock") {
+        return "You Lose! Rock beats Scissors";
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        return "You Win! Scissors beats Paper";
+    } else if (playerSelection === "paper" && computerSelection === "scissors") {
+        return "You Lose! Scissors beats Paper";
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
+        return "You Win! Paper beats Rock";
+    } else {
+        return "Tie! Nobody wins";
+    }
+}
+
+const playerSelection = prompt("Enter 'rock', 'paper', or 'scissors'").toLowerCase();
+const computerSelection = getComputerChoice();
+
+console.log(playRound(playerSelection, computerSelection));
