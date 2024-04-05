@@ -1,6 +1,8 @@
 //PSEUDOCODE
 
 //Generate random "rock", "paper", "scissors" selection (getComputerChoice)
+    //Generate random number
+    //Assign number to "rock", "paper", or "scissors" depending on the value
 //Take in prompt from player (playerSelection)
     //Check that playerSelection is valid (case insensitive)
         //If so, play game
@@ -14,7 +16,19 @@
     //If < 5, keep playing
     //If === 5, compare playerWins to computerWins, return the winner, and display message
 
-
-
-
-
+function getComputerChoice() {
+    let randomNumber = Math.floor(Math.random() * 3);
+    let computerSelection;
+    switch (randomNumber) {
+        case 0:
+            computerSelection = "rock";
+            break;
+        case 1:
+            computerSelection = "paper";
+            break;
+        case 2:
+            computerSelection = "scissors";
+            break;
+    }
+    return computerSelection;
+}
